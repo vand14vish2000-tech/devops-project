@@ -1,9 +1,13 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        stage('Deploy') {
             steps {
-                echo 'Hello Vandana DevOps World!'
+                sh '''
+                sudo yum install -y httpd
+                sudo systemctl start httpd
+                sudo cp index.html /var/www/html/
+                '''
             }
         }
     }
