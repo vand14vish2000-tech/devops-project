@@ -1,1 +1,1203 @@
-hello  from Jenkins project 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ICONIC FOREVER — Outfit</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --black: #0c0c0c;
+      --white: #faf8f5;
+      --gold:  #c9a96e;
+      --gold2: #e8c98a;
+      --muted: #7a7165;
+      --card:  #141414;
+      --border: rgba(201,169,110,0.2);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+    /* ══════════════════════════════
+       NAVBAR
+    ══════════════════════════════ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.4rem 4rem;
+      background: rgba(12,12,12,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      transition: padding 0.3s;
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links {
+      display: flex; gap: 2.5rem; list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none; color: #aaa;
+      font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+      transition: color 0.3s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0;
+      width: 0; height: 1px; background: var(--gold);
+      transition: width 0.3s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-actions { display: flex; align-items: center; gap: 1.4rem; }
+    .nav-icon {
+      background: none; border: none; color: #aaa;
+      font-size: 1.1rem; cursor: pointer; transition: color 0.3s;
+      position: relative;
+    }
+    .nav-icon:hover { color: var(--gold); }
+    .cart-count {
+      position: absolute; top: -6px; right: -8px;
+      background: var(--gold); color: var(--black);
+      font-size: 0.55rem; font-weight: 600;
+      width: 16px; height: 16px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* ══════════════════════════════
+       HERO
+    ══════════════════════════════ */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      padding-top: 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 6rem 4rem 6rem 6rem;
+      position: relative; z-index: 2;
+    }
+
+    .hero-tag {
+      font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 0.8rem;
+      animation: fadeSlideUp 0.8s 0.2s ease both;
+    }
+    .hero-tag::before { content: ''; display: block; width: 32px; height: 1px; background: var(--gold); }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 6vw, 6rem);
+      font-weight: 300;
+      line-height: 1.05;
+      margin-bottom: 1.5rem;
+      animation: fadeSlideUp 0.8s 0.35s ease both;
+    }
+    .hero-title em { font-style: italic; color: var(--gold); }
+
+    .hero-desc {
+      font-size: 0.85rem; color: #888; line-height: 1.9;
+      max-width: 380px; margin-bottom: 2.8rem;
+      animation: fadeSlideUp 0.8s 0.5s ease both;
+    }
+
+    .hero-btns {
+      display: flex; gap: 1rem; align-items: center;
+      animation: fadeSlideUp 0.8s 0.65s ease both;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--black);
+      border: none; border-radius: 0;
+      padding: 1rem 2.8rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+      text-decoration: none; display: inline-block;
+    }
+    .btn-primary:hover {
+      background: var(--gold2);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(201,169,110,0.25);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 0;
+      padding: 1rem 2.2rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      cursor: pointer;
+      transition: border-color 0.3s, color 0.3s;
+      text-decoration: none; display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    .hero-stats {
+      display: flex; gap: 3rem; margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      animation: fadeSlideUp 0.8s 0.8s ease both;
+    }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem; font-weight: 600; color: var(--gold);
+    }
+    .stat-label { font-size: 0.65rem; letter-spacing: 0.15em; color: #666; text-transform: uppercase; margin-top: 0.2rem; }
+
+    .hero-right {
+      position: relative; overflow: hidden;
+      animation: fadeIn 1.2s 0.4s ease both;
+    }
+
+    .hero-image-grid {
+      position: absolute; inset: 0;
+      display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;
+      gap: 3px;
+    }
+
+    .hero-img-cell {
+      overflow: hidden; position: relative;
+    }
+    .hero-img-cell:nth-child(1) { grid-row: span 2; }
+
+    .hero-img-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 4rem;
+      transition: transform 0.6s ease;
+    }
+    .hero-img-cell:hover .hero-img-placeholder { transform: scale(1.05); }
+
+    /* gradient overlays on hero cells */
+    .cell-1 { background: linear-gradient(160deg, #1a1208 0%, #2a1e10 40%, #0c0c0c 100%); }
+    .cell-2 { background: linear-gradient(160deg, #0e0e14 0%, #1a1a2a 100%); }
+    .cell-3 { background: linear-gradient(160deg, #140e0e 0%, #1e1010 100%); }
+
+    .hero-img-label {
+      position: absolute; bottom: 1rem; left: 1rem;
+      font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); opacity: 0.7;
+    }
+
+    /* Diagonal gold line */
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0; left: 50%;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+      opacity: 0.3;
+      z-index: 1;
+    }
+
+    /* ══════════════════════════════
+       MARQUEE TICKER
+    ══════════════════════════════ */
+    .ticker {
+      background: var(--gold);
+      color: var(--black);
+      padding: 0.7rem 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .ticker-inner {
+      display: inline-flex;
+      animation: tickerScroll 22s linear infinite;
+    }
+    .ticker-item {
+      font-size: 0.65rem; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase;
+      padding: 0 2.5rem;
+      display: inline-flex; align-items: center; gap: 0.8rem;
+    }
+    .ticker-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--black); opacity: 0.5; }
+    @keyframes tickerScroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ══════════════════════════════
+       SECTION COMMONS
+    ══════════════════════════════ */
+    section { padding: 7rem 5rem; }
+
+    .section-header {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      margin-bottom: 4rem;
+    }
+    .section-tag {
+      font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.8rem;
+      display: flex; align-items: center; gap: 0.7rem;
+    }
+    .section-tag::before { content: ''; width: 24px; height: 1px; background: var(--gold); display: block; }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 300; line-height: 1.15;
+    }
+    .section-title em { font-style: italic; color: var(--gold); }
+    .see-all {
+      font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); text-decoration: none; border-bottom: 1px solid transparent;
+      transition: border-color 0.3s; padding-bottom: 2px; cursor: pointer;
+    }
+    .see-all:hover { border-color: var(--gold); }
+
+    /* ══════════════════════════════
+       CATEGORIES
+    ══════════════════════════════ */
+    .categories-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
+    }
+
+    .cat-card {
+      position: relative; overflow: hidden;
+      aspect-ratio: 3/4;
+      cursor: pointer;
+      border: 1px solid var(--border);
+    }
+
+    .cat-bg {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 5rem;
+      transition: transform 0.6s ease;
+    }
+    .cat-card:hover .cat-bg { transform: scale(1.08); }
+
+    .cat-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(12,12,12,0.92) 0%, rgba(12,12,12,0.2) 60%, transparent 100%);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 1.8rem 1.5rem;
+      transition: background 0.3s;
+    }
+    .cat-card:hover .cat-overlay { background: linear-gradient(to top, rgba(12,12,12,0.95) 0%, rgba(12,12,12,0.4) 60%, transparent 100%); }
+
+    .cat-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem; font-weight: 400;
+      margin-bottom: 0.3rem;
+    }
+    .cat-count { font-size: 0.65rem; letter-spacing: 0.15em; color: var(--gold); text-transform: uppercase; }
+
+    .cat-arrow {
+      position: absolute; top: 1.2rem; right: 1.2rem;
+      width: 36px; height: 36px; border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem; color: var(--gold);
+      opacity: 0; transform: translateY(-4px);
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    .cat-card:hover .cat-arrow { opacity: 1; transform: translateY(0); }
+
+    /* cat backgrounds */
+    .cat-women  { background: linear-gradient(145deg, #1a0e14, #2a1020, #1a1020); }
+    .cat-men    { background: linear-gradient(145deg, #0e121a, #101a28, #0e1018); }
+    .cat-ethnic { background: linear-gradient(145deg, #1a1408, #261c08, #1a1208); }
+    .cat-acc    { background: linear-gradient(145deg, #101414, #141e1e, #0e1410); }
+
+    /* ══════════════════════════════
+       PRODUCTS GRID
+    ══════════════════════════════ */
+    .products-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
+    }
+
+    .product-card {
+      position: relative; cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .product-card:hover { transform: translateY(-4px); }
+
+    .product-img {
+      aspect-ratio: 3/4;
+      position: relative; overflow: hidden;
+      background: var(--card);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 5rem;
+      margin-bottom: 1.2rem;
+    }
+    .product-img-inner { transition: transform 0.6s ease; }
+    .product-card:hover .product-img-inner { transform: scale(1.06); }
+
+    .product-badge {
+      position: absolute; top: 1rem; left: 1rem;
+      font-size: 0.58rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase;
+      padding: 0.3rem 0.7rem;
+    }
+    .badge-new { background: var(--gold); color: var(--black); }
+    .badge-sale { background: #c0392b; color: white; }
+    .badge-hot  { background: transparent; color: var(--gold); border: 1px solid var(--gold); }
+
+    .product-actions {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      display: flex; gap: 0;
+      transform: translateY(100%);
+      transition: transform 0.35s ease;
+    }
+    .product-card:hover .product-actions { transform: translateY(0); }
+
+    .prod-action-btn {
+      flex: 1; border: none; padding: 0.8rem 0;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.62rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .add-cart { background: var(--gold); color: var(--black); }
+    .add-cart:hover { background: var(--gold2); }
+    .add-wish { background: rgba(12,12,12,0.9); color: var(--white); border: 1px solid var(--border); flex: 0 0 48px; }
+    .add-wish:hover { color: var(--gold); border-color: var(--gold); }
+
+    .product-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; font-weight: 400; margin-bottom: 0.3rem;
+    }
+    .product-brand {
+      font-size: 0.62rem; letter-spacing: 0.15em; color: var(--muted);
+      text-transform: uppercase; margin-bottom: 0.5rem;
+    }
+    .product-price {
+      display: flex; align-items: center; gap: 0.7rem;
+    }
+    .price-now { color: var(--gold); font-size: 0.9rem; font-weight: 500; }
+    .price-old { color: #555; font-size: 0.8rem; text-decoration: line-through; }
+
+    /* color swatches */
+    .product-swatches {
+      display: flex; gap: 0.4rem; margin-top: 0.6rem;
+    }
+    .swatch {
+      width: 14px; height: 14px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.15);
+      cursor: pointer; transition: transform 0.2s;
+    }
+    .swatch:hover { transform: scale(1.3); }
+
+    /* ══════════════════════════════
+       BANNER / EDITORIAL
+    ══════════════════════════════ */
+    .editorial {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      padding: 0 5rem 7rem;
+    }
+
+    .ed-card {
+      position: relative; overflow: hidden;
+      min-height: 500px;
+      display: flex; align-items: flex-end;
+      padding: 3rem;
+      cursor: pointer;
+      border: 1px solid var(--border);
+    }
+
+    .ed-bg {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10rem;
+      transition: transform 0.7s ease;
+    }
+    .ed-card:hover .ed-bg { transform: scale(1.06); }
+
+    .ed-bg-1 { background: linear-gradient(135deg, #1a1208, #2e2010, #0c0c0c); }
+    .ed-bg-2 { background: linear-gradient(135deg, #0e0e1a, #101828, #0c0c14); }
+
+    .ed-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(12,12,12,0.95) 0%, rgba(12,12,12,0.3) 50%, transparent 100%);
+    }
+
+    .ed-content { position: relative; z-index: 2; }
+    .ed-tag {
+      font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.8rem;
+    }
+    .ed-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem; font-weight: 300; margin-bottom: 0.8rem;
+    }
+    .ed-sub { font-size: 0.82rem; color: #888; margin-bottom: 1.5rem; line-height: 1.7; }
+
+    /* ══════════════════════════════
+       FEATURES STRIP
+    ══════════════════════════════ */
+    .features {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 0 5rem;
+      margin-bottom: 7rem;
+    }
+
+    .feature-item {
+      padding: 2.5rem 2rem;
+      display: flex; align-items: center; gap: 1.2rem;
+      border-right: 1px solid var(--border);
+    }
+    .feature-item:last-child { border-right: none; }
+
+    .feat-icon { font-size: 1.6rem; flex-shrink: 0; }
+    .feat-title { font-size: 0.8rem; font-weight: 500; margin-bottom: 0.2rem; }
+    .feat-sub { font-size: 0.68rem; color: #666; line-height: 1.5; }
+
+    /* ══════════════════════════════
+       TESTIMONIALS
+    ══════════════════════════════ */
+    .testimonials { background: #0f0f0f; }
+
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+    }
+
+    .testi-card {
+      padding: 2.5rem;
+      border: 1px solid var(--border);
+      background: var(--card);
+      position: relative;
+    }
+    .testi-card::before {
+      content: '"';
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 6rem; line-height: 0.7;
+      color: var(--gold); opacity: 0.15;
+      position: absolute; top: 1.5rem; left: 1.5rem;
+    }
+
+    .stars { color: var(--gold); font-size: 0.75rem; margin-bottom: 1rem; letter-spacing: 0.1em; }
+    .testi-text { font-size: 0.85rem; color: #bbb; line-height: 1.8; margin-bottom: 1.5rem; font-style: italic; }
+    .testi-name { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; }
+    .testi-loc { font-size: 0.62rem; color: var(--muted); margin-top: 0.2rem; }
+
+    /* ══════════════════════════════
+       NEWSLETTER
+    ══════════════════════════════ */
+    .newsletter {
+      background: linear-gradient(135deg, #1a1408 0%, #0c0c0c 50%, #0e0e1a 100%);
+      text-align: center;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .newsletter-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300; margin-bottom: 0.8rem;
+    }
+    .newsletter-sub { font-size: 0.82rem; color: #888; margin-bottom: 2.5rem; }
+
+    .newsletter-form {
+      display: flex; max-width: 480px; margin: 0 auto;
+    }
+    .newsletter-form input {
+      flex: 1;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-right: none;
+      color: var(--white);
+      padding: 1rem 1.5rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8rem;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .newsletter-form input:focus { border-color: var(--gold); }
+    .newsletter-form input::placeholder { color: #555; }
+    .newsletter-form button {
+      background: var(--gold); color: var(--black);
+      border: none; padding: 1rem 2rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+      cursor: pointer; transition: background 0.3s;
+      white-space: nowrap;
+    }
+    .newsletter-form button:hover { background: var(--gold2); }
+
+    .newsletter-note { font-size: 0.65rem; color: #555; margin-top: 1rem; }
+
+    /* ══════════════════════════════
+       FOOTER
+    ══════════════════════════════ */
+    footer {
+      padding: 5rem 5rem 3rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 4rem; margin-bottom: 4rem;
+    }
+
+    .footer-brand-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem; font-weight: 600; margin-bottom: 1rem;
+    }
+    .footer-brand-name span { color: var(--gold); }
+    .footer-desc { font-size: 0.8rem; color: #666; line-height: 1.8; max-width: 280px; margin-bottom: 1.8rem; }
+
+    .social-links { display: flex; gap: 0.8rem; }
+    .social-link {
+      width: 36px; height: 36px;
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; text-decoration: none; color: #888;
+      transition: border-color 0.3s, color 0.3s;
+    }
+    .social-link:hover { border-color: var(--gold); color: var(--gold); }
+
+    .footer-col-title {
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--white); margin-bottom: 1.5rem;
+    }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 0.7rem; }
+    .footer-links a {
+      text-decoration: none; color: #666; font-size: 0.8rem;
+      transition: color 0.3s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+
+    .footer-bottom {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.68rem; color: #444;
+    }
+
+    .payment-icons { display: flex; gap: 0.6rem; align-items: center; }
+    .pay-icon {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      padding: 0.3rem 0.6rem;
+      font-size: 0.6rem; color: #888; border-radius: 2px;
+    }
+
+    /* ══════════════════════════════
+       CART SIDEBAR
+    ══════════════════════════════ */
+    .cart-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 200;
+      opacity: 0; pointer-events: none; transition: opacity 0.3s;
+    }
+    .cart-overlay.open { opacity: 1; pointer-events: all; }
+
+    .cart-sidebar {
+      position: fixed; top: 0; right: 0; bottom: 0; width: 420px; z-index: 201;
+      background: #111;
+      border-left: 1px solid var(--border);
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(.25,.46,.45,.94);
+      display: flex; flex-direction: column;
+    }
+    .cart-sidebar.open { transform: translateX(0); }
+
+    .cart-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 2rem 2rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .cart-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-weight: 400;
+    }
+    .cart-close {
+      background: none; border: none; color: #888;
+      font-size: 1.2rem; cursor: pointer; transition: color 0.2s;
+    }
+    .cart-close:hover { color: var(--gold); }
+
+    .cart-items { flex: 1; overflow-y: auto; padding: 1.5rem 2rem; }
+
+    .cart-item {
+      display: flex; gap: 1rem; margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);
+    }
+    .cart-item-img {
+      width: 80px; height: 100px; flex-shrink: 0;
+      background: var(--card); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.5rem;
+    }
+    .cart-item-info { flex: 1; }
+    .cart-item-name { font-family: 'Cormorant Garamond', serif; font-size: 1rem; margin-bottom: 0.3rem; }
+    .cart-item-brand { font-size: 0.6rem; letter-spacing: 0.12em; color: var(--muted); text-transform: uppercase; margin-bottom: 0.5rem; }
+    .cart-item-price { color: var(--gold); font-size: 0.88rem; margin-bottom: 0.7rem; }
+    .qty-control { display: flex; align-items: center; gap: 0.8rem; }
+    .qty-btn {
+      width: 26px; height: 26px; border: 1px solid var(--border);
+      background: none; color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 0.9rem; transition: border-color 0.2s;
+    }
+    .qty-btn:hover { border-color: var(--gold); color: var(--gold); }
+    .qty-num { font-size: 0.85rem; }
+
+    .cart-footer {
+      padding: 1.5rem 2rem 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .cart-subtotal {
+      display: flex; justify-content: space-between;
+      font-size: 0.8rem; color: #888; margin-bottom: 0.6rem;
+    }
+    .cart-total {
+      display: flex; justify-content: space-between;
+      margin-bottom: 1.5rem;
+      padding-top: 0.8rem; border-top: 1px solid var(--border);
+    }
+    .cart-total-label { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; }
+    .cart-total-price { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--gold); }
+    .checkout-btn {
+      width: 100%;
+      background: var(--gold); color: var(--black);
+      border: none; padding: 1.1rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+      cursor: pointer; transition: background 0.3s;
+    }
+    .checkout-btn:hover { background: var(--gold2); }
+
+    .cart-empty {
+      text-align: center; padding: 4rem 2rem; color: #555;
+    }
+    .cart-empty-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .cart-empty-text { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; margin-bottom: 0.5rem; color: #888; }
+    .cart-empty-sub { font-size: 0.75rem; }
+
+    /* ══════════════════════════════
+       ANIMATIONS
+    ══════════════════════════════ */
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* Gold shimmer on title */
+    .shimmer {
+      background: linear-gradient(90deg, var(--gold) 0%, var(--gold2) 50%, var(--gold) 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmerAnim 3s linear infinite;
+    }
+    @keyframes shimmerAnim {
+      from { background-position: 0% center; }
+      to   { background-position: 200% center; }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      nav { padding: 1.2rem 2rem; }
+      .nav-links { display: none; }
+      section { padding: 5rem 2rem; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { display: none; }
+      .hero-left { padding: 4rem 2rem; }
+      .hero::after { display: none; }
+      .categories-grid { grid-template-columns: repeat(2, 1fr); }
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .editorial { grid-template-columns: 1fr; padding: 0 2rem 5rem; }
+      .features { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .cart-sidebar { width: 100%; }
+    }
+    @media (max-width: 600px) {
+      .hero-title { font-size: 2.8rem; }
+      .hero-stats { gap: 1.5rem; }
+      .categories-grid { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+      .products-grid { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+      .features { grid-template-columns: 1fr; padding: 0 2rem; }
+      .newsletter-form { flex-direction: column; }
+      .newsletter-form input { border-right: 1px solid var(--border); border-bottom: none; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav>
+  <a class="nav-logo" href="#">ICONIC <span>FOREVER</span></a>
+  <ul class="nav-links">
+    <li><a href="#">Women</a></li>
+    <li><a href="#">Men</a></li>
+    <li><a href="#">Ethnic</a></li>
+    <li><a href="#">Accessories</a></li>
+    <li><a href="#">New In</a></li>
+    <li><a href="#">Sale</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="nav-icon" title="Search">🔍</button>
+    <button class="nav-icon" title="Wishlist">🤍</button>
+    <button class="nav-icon" onclick="toggleCart()" title="Cart" style="position:relative">
+      🛍️
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">New Collection 2025</div>
+    <h1 class="hero-title">
+      Dress Like<br/>You're <em>Iconic</em><br/>Forever
+    </h1>
+    <p class="hero-desc">
+      Curated outfits that transcend trends. Every piece tells a story of elegance, crafted for those who refuse to be ordinary.
+    </p>
+    <div class="hero-btns">
+      <a href="#" class="btn-primary">Shop Now</a>
+      <a href="#" class="btn-outline">View Lookbook</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">12K+</div>
+        <div class="stat-label">Happy Clients</div>
+      </div>
+      <div>
+        <div class="stat-num">800+</div>
+        <div class="stat-label">Unique Styles</div>
+      </div>
+      <div>
+        <div class="stat-num">98%</div>
+        <div class="stat-label">Satisfaction</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-image-grid">
+      <div class="hero-img-cell">
+        <div class="hero-img-placeholder cell-1">👗</div>
+        <div class="hero-img-label">Women's Edit</div>
+      </div>
+      <div class="hero-img-cell">
+        <div class="hero-img-placeholder cell-2">🧥</div>
+        <div class="hero-img-label">Men's Look</div>
+      </div>
+      <div class="hero-img-cell">
+        <div class="hero-img-placeholder cell-3">🥻</div>
+        <div class="hero-img-label">Ethnic Wear</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TICKER ══ -->
+<div class="ticker">
+  <div class="ticker-inner" id="ticker">
+    <!-- duplicated by JS -->
+  </div>
+</div>
+
+<!-- ══ CATEGORIES ══ -->
+<section id="categories">
+  <div class="section-header">
+    <div>
+      <div class="section-tag">Explore</div>
+      <h2 class="section-title">Shop by <em>Category</em></h2>
+    </div>
+    <a class="see-all">View All →</a>
+  </div>
+  <div class="categories-grid">
+    <div class="cat-card">
+      <div class="cat-bg cat-women">👗</div>
+      <div class="cat-overlay">
+        <div class="cat-name">Women</div>
+        <div class="cat-count">320+ Styles</div>
+      </div>
+      <div class="cat-arrow">→</div>
+    </div>
+    <div class="cat-card">
+      <div class="cat-bg cat-men">🧥</div>
+      <div class="cat-overlay">
+        <div class="cat-name">Men</div>
+        <div class="cat-count">240+ Styles</div>
+      </div>
+      <div class="cat-arrow">→</div>
+    </div>
+    <div class="cat-card">
+      <div class="cat-bg cat-ethnic">🥻</div>
+      <div class="cat-overlay">
+        <div class="cat-name">Ethnic</div>
+        <div class="cat-count">180+ Styles</div>
+      </div>
+      <div class="cat-arrow">→</div>
+    </div>
+    <div class="cat-card">
+      <div class="cat-bg cat-acc">👜</div>
+      <div class="cat-overlay">
+        <div class="cat-name">Accessories</div>
+        <div class="cat-count">150+ Items</div>
+      </div>
+      <div class="cat-arrow">→</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ NEW ARRIVALS ══ -->
+<section id="new">
+  <div class="section-header">
+    <div>
+      <div class="section-tag">Just Dropped</div>
+      <h2 class="section-title">New <em>Arrivals</em></h2>
+    </div>
+    <a class="see-all">See All New →</a>
+  </div>
+  <div class="products-grid" id="productsGrid">
+    <!-- injected by JS -->
+  </div>
+</section>
+
+<!-- ══ EDITORIAL ══ -->
+<div class="editorial">
+  <div class="ed-card">
+    <div class="ed-bg ed-bg-1">🌸</div>
+    <div class="ed-overlay"></div>
+    <div class="ed-content">
+      <div class="ed-tag">Exclusive Collection</div>
+      <div class="ed-title">The Bridal<br/>Lookbook 2025</div>
+      <div class="ed-sub">Timeless elegance for your most iconic day.</div>
+      <a class="btn-primary">Explore →</a>
+    </div>
+  </div>
+  <div class="ed-card">
+    <div class="ed-bg ed-bg-2">🌙</div>
+    <div class="ed-overlay"></div>
+    <div class="ed-content">
+      <div class="ed-tag">Winter Edit</div>
+      <div class="ed-title">Luxury Winter<br/>Essentials</div>
+      <div class="ed-sub">Wrap yourself in warmth without compromising style.</div>
+      <a class="btn-outline">Shop Now →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FEATURES ══ -->
+<div class="features">
+  <div class="feature-item">
+    <div class="feat-icon">🚚</div>
+    <div>
+      <div class="feat-title">Free Delivery</div>
+      <div class="feat-sub">On all orders above ₹999 across India</div>
+    </div>
+  </div>
+  <div class="feature-item">
+    <div class="feat-icon">↩️</div>
+    <div>
+      <div class="feat-title">Easy Returns</div>
+      <div class="feat-sub">30-day hassle-free returns policy</div>
+    </div>
+  </div>
+  <div class="feature-item">
+    <div class="feat-icon">🔒</div>
+    <div>
+      <div class="feat-title">Secure Payment</div>
+      <div class="feat-sub">100% encrypted & safe checkout</div>
+    </div>
+  </div>
+  <div class="feature-item">
+    <div class="feat-icon">💎</div>
+    <div>
+      <div class="feat-title">Premium Quality</div>
+      <div class="feat-sub">Carefully curated & quality-checked</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TESTIMONIALS ══ -->
+<section class="testimonials">
+  <div class="section-header">
+    <div>
+      <div class="section-tag">Reviews</div>
+      <h2 class="section-title">What They <em>Say</em></h2>
+    </div>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"Iconic Forever is the only brand that truly understands modern Indian fashion. Every outfit I've ordered has been absolutely stunning and received countless compliments."</p>
+      <div class="testi-name">Priya Sharma</div>
+      <div class="testi-loc">Mumbai, Maharashtra</div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"The quality is exceptional — you can feel the premium fabric the moment you unbox it. Customer service is world-class too. Will keep coming back!"</p>
+      <div class="testi-name">Arjun Mehta</div>
+      <div class="testi-loc">Delhi, NCR</div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"Wore their Anarkali set to my cousin's wedding and I was literally the most stylish person there. Fast delivery, perfect fit, and gorgeous packaging!"</p>
+      <div class="testi-name">Ananya Reddy</div>
+      <div class="testi-loc">Hyderabad, Telangana</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ NEWSLETTER ══ -->
+<section class="newsletter">
+  <div class="section-tag" style="justify-content:center;margin-bottom:1rem;">Exclusive Access</div>
+  <div class="newsletter-title">Join the <em class="shimmer">Iconic</em> Circle</div>
+  <p class="newsletter-sub">Get early access to new drops, exclusive offers & style inspiration delivered to your inbox.</p>
+  <div class="newsletter-form">
+    <input type="email" placeholder="Enter your email address"/>
+    <button>Subscribe</button>
+  </div>
+  <p class="newsletter-note">No spam. Unsubscribe anytime. We respect your privacy.</p>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">ICONIC <span>FOREVER</span></div>
+      <p class="footer-desc">Your destination for timeless, iconic outfits that blend contemporary style with heritage craftsmanship.</p>
+      <div class="social-links">
+        <a class="social-link" href="#">𝕏</a>
+        <a class="social-link" href="#">in</a>
+        <a class="social-link" href="#">📸</a>
+        <a class="social-link" href="#">▶</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Shop</div>
+      <ul class="footer-links">
+        <li><a href="#">New Arrivals</a></li>
+        <li><a href="#">Women's Wear</a></li>
+        <li><a href="#">Men's Wear</a></li>
+        <li><a href="#">Ethnic Wear</a></li>
+        <li><a href="#">Accessories</a></li>
+        <li><a href="#">Sale</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Help</div>
+      <ul class="footer-links">
+        <li><a href="#">Size Guide</a></li>
+        <li><a href="#">Track Order</a></li>
+        <li><a href="#">Returns & Refunds</a></li>
+        <li><a href="#">Shipping Policy</a></li>
+        <li><a href="#">FAQs</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Press</a></li>
+        <li><a href="#">Sustainability</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Use</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Iconic Forever Outfit. All rights reserved.</span>
+    <div class="payment-icons">
+      <span style="font-size:0.65rem;color:#555;margin-right:0.4rem;">We Accept:</span>
+      <span class="pay-icon">VISA</span>
+      <span class="pay-icon">MC</span>
+      <span class="pay-icon">UPI</span>
+      <span class="pay-icon">GPay</span>
+      <span class="pay-icon">PhonePe</span>
+      <span class="pay-icon">COD</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ══ CART SIDEBAR ══ -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <div class="cart-title">Your Cart</div>
+    <button class="cart-close" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty">
+      <div class="cart-empty-icon">🛍️</div>
+      <div class="cart-empty-text">Your cart is empty</div>
+      <div class="cart-empty-sub">Add some iconic pieces to get started!</div>
+    </div>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-subtotal"><span>Subtotal</span><span id="subtotalAmt">₹0</span></div>
+    <div class="cart-subtotal"><span>Delivery</span><span style="color:#3a3">FREE</span></div>
+    <div class="cart-total">
+      <span class="cart-total-label">Total</span>
+      <span class="cart-total-price" id="totalAmt">₹0</span>
+    </div>
+    <button class="checkout-btn">Proceed to Checkout →</button>
+  </div>
+</div>
+
+<script>
+  /* ══ Ticker ══ */
+  const tickerItems = ['New Arrivals', 'Free Delivery Over ₹999', 'Use Code ICONIC10 for 10% Off', 'Premium Quality Guaranteed', 'Easy 30-Day Returns', 'Bridal Collection Now Live', 'Shop Ethnic Wear'];
+  const ticker = document.getElementById('ticker');
+  let tickerHTML = '';
+  for (let i = 0; i < 2; i++) {
+    tickerItems.forEach(t => {
+      tickerHTML += `<span class="ticker-item">${t}<span class="ticker-dot"></span></span>`;
+    });
+  }
+  ticker.innerHTML = tickerHTML;
+
+  /* ══ Products Data ══ */
+  const products = [
+    { id:1, name:'Noir Silk Blazer',    brand:'Iconic Essentials', price:'₹4,299', old:'₹5,999', badge:'new',  emoji:'🧥', swatches:['#1a1a1a','#2d1b1b','#1b2d1b'], hot:false },
+    { id:2, name:'Floral Anarkali Set', brand:'Heritage Craft',    price:'₹3,199', old:'₹4,500', badge:'hot',  emoji:'🥻', swatches:['#c9a96e','#8b0000','#1a1a3a'], hot:true  },
+    { id:3, name:'Linen Coord Set',     brand:'Modern Muse',       price:'₹2,499', old:'',       badge:'new',  emoji:'👗', swatches:['#f5f0e8','#d4c5a9','#8b7355'], hot:false },
+    { id:4, name:'Velvet Evening Gown', brand:'Luxe Studio',       price:'₹6,799', old:'₹9,999', badge:'sale', emoji:'👗', swatches:['#2d0a2d','#0a2d2d','#1a1a1a'], hot:false },
+    { id:5, name:'Classic Oxford Shirt',brand:'Iconic Men',        price:'₹1,899', old:'',       badge:'new',  emoji:'👔', swatches:['#ffffff','#87ceeb','#d2b48c'], hot:false },
+    { id:6, name:'Embroidered Kurta',   brand:'Heritage Craft',    price:'₹2,799', old:'₹3,500', badge:'hot',  emoji:'🥻', swatches:['#c9a96e','#ffffff','#1a1a2a'], hot:true  },
+    { id:7, name:'Leather Tote Bag',    brand:'Luxe Acc',          price:'₹3,499', old:'',       badge:'new',  emoji:'👜', swatches:['#1a1a1a','#8b4513','#c9a96e'], hot:false },
+    { id:8, name:'Chiffon Wrap Dress',  brand:'Modern Muse',       price:'₹2,199', old:'₹3,200', badge:'sale', emoji:'👗', swatches:['#ff69b4','#dda0dd','#e6e6fa'], hot:false },
+  ];
+
+  const badgeClass = { new:'badge-new', hot:'badge-hot', sale:'badge-sale' };
+  const badgeText  = { new:'New', hot:'🔥 Hot', sale:'Sale' };
+
+  const grid = document.getElementById('productsGrid');
+  products.forEach(p => {
+    grid.innerHTML += `
+      <div class="product-card" onclick="addToCart(${p.id})">
+        <div class="product-img">
+          <div class="product-img-inner">${p.emoji}</div>
+          <span class="product-badge ${badgeClass[p.badge]}">${badgeText[p.badge]}</span>
+          <div class="product-actions">
+            <button class="prod-action-btn add-cart" onclick="event.stopPropagation();addToCart(${p.id})">Add to Cart</button>
+            <button class="prod-action-btn add-wish" title="Wishlist">🤍</button>
+          </div>
+        </div>
+        <div class="product-brand">${p.brand}</div>
+        <div class="product-name">${p.name}</div>
+        <div class="product-price">
+          <span class="price-now">${p.price}</span>
+          ${p.old ? `<span class="price-old">${p.old}</span>` : ''}
+        </div>
+        <div class="product-swatches">
+          ${p.swatches.map(c=>`<div class="swatch" style="background:${c}" title="Color"></div>`).join('')}
+        </div>
+      </div>`;
+  });
+
+  /* ══ Cart Logic ══ */
+  let cart = [];
+
+  function addToCart(id) {
+    const p = products.find(x => x.id === id);
+    const existing = cart.find(x => x.id === id);
+    if (existing) { existing.qty++; }
+    else { cart.push({ ...p, qty: 1 }); }
+    updateCart();
+    toggleCart(true);
+  }
+
+  function updateCart() {
+    const count   = cart.reduce((s,x) => s + x.qty, 0);
+    document.getElementById('cartCount').textContent = count;
+
+    const itemsEl   = document.getElementById('cartItems');
+    const footerEl  = document.getElementById('cartFooter');
+
+    if (cart.length === 0) {
+      itemsEl.innerHTML = `<div class="cart-empty"><div class="cart-empty-icon">🛍️</div><div class="cart-empty-text">Your cart is empty</div><div class="cart-empty-sub">Add some iconic pieces to get started!</div></div>`;
+      footerEl.style.display = 'none';
+      return;
+    }
+
+    footerEl.style.display = 'block';
+    itemsEl.innerHTML = cart.map(item => `
+      <div class="cart-item">
+        <div class="cart-item-img">${item.emoji}</div>
+        <div class="cart-item-info">
+          <div class="cart-item-name">${item.name}</div>
+          <div class="cart-item-brand">${item.brand}</div>
+          <div class="cart-item-price">${item.price}</div>
+          <div class="qty-control">
+            <button class="qty-btn" onclick="changeQty(${item.id},-1)">−</button>
+            <span class="qty-num">${item.qty}</span>
+            <button class="qty-btn" onclick="changeQty(${item.id},1)">+</button>
+          </div>
+        </div>
+      </div>
+    `).join('');
+
+    const total = cart.reduce((s,x) => {
+      const num = parseInt(x.price.replace(/[₹,]/g,''));
+      return s + num * x.qty;
+    }, 0);
+    const fmt = '₹' + total.toLocaleString('en-IN');
+    document.getElementById('subtotalAmt').textContent = fmt;
+    document.getElementById('totalAmt').textContent    = fmt;
+  }
+
+  function changeQty(id, delta) {
+    const item = cart.find(x => x.id === id);
+    if (!item) return;
+    item.qty += delta;
+    if (item.qty <= 0) cart = cart.filter(x => x.id !== id);
+    updateCart();
+  }
+
+  let cartOpen = false;
+  function toggleCart(forceOpen) {
+    cartOpen = forceOpen === true ? true : !cartOpen;
+    document.getElementById('cartOverlay').classList.toggle('open', cartOpen);
+    document.getElementById('cartSidebar').classList.toggle('open', cartOpen);
+    document.body.style.overflow = cartOpen ? 'hidden' : '';
+  }
+
+  /* ══ Navbar scroll shrink ══ */
+  window.addEventListener('scroll', () => {
+    document.querySelector('nav').style.padding = window.scrollY > 60 ? '0.9rem 4rem' : '1.4rem 4rem';
+  });
+</script>
+</body>
+</html>
